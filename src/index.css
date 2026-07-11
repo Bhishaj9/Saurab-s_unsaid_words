@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------------------------------
+   Global document style — luxury book aesthetic
+   The warm paper palette is defined in tailwind.config.js. This layer adds
+   subtle texture, ambient depth, and refined scrollbar styling.
+   -------------------------------------------------------------------------- */
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100dvh;
+  }
+
+  body {
+    margin: 0;
+    background-color: theme("colors.paper.DEFAULT");
+    background-image:
+      /* Walnut desk grain — very subtle horizontal wood texture */
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        rgba(101, 67, 33, 0.007) 1px,
+        transparent 2px,
+        transparent 40px,
+        rgba(90, 58, 28, 0.005) 41px,
+        transparent 42px
+      ),
+      repeating-linear-gradient(
+        102deg,
+        transparent 0,
+        rgba(111, 74, 36, 0.004) 1px,
+        transparent 3px,
+        transparent 70px,
+        rgba(101, 67, 33, 0.003) 71px,
+        transparent 73px
+      ),
+      /* Subtle paper grain */
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+      /* Warm ambient glow (afternoon desk light) */
+      radial-gradient(ellipse at 50% 35%, theme("colors.paper.cream") 0%, transparent 65%),
+      radial-gradient(ellipse at 70% 70%, theme("colors.accent.pale / 0.04") 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 80%, rgba(180, 155, 120, 0.025) 0%, transparent 45%);
+    background-attachment: fixed;
+    color: theme("colors.ink.DEFAULT");
+    font-family: theme("fontFamily.serif");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior-y: none;
+  }
+
+  /* Selection — warm editorial tone */
+  ::selection {
+    background-color: theme("colors.accent.pale / 0.35");
+    color: theme("colors.ink.DEFAULT");
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: theme("colors.ink.lighter / 0.3");
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: theme("colors.ink.lighter / 0.5");
+  }
+
+  /* Firefox scrollbar — thin, matching the editorial palette */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.ink.lighter / 0.3") transparent;
+  }
+
+  /* Dark mode — warm paper-to-night transition */
+  .dark body,
+  .dark #root {
+    background-color: #1a1612;
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0, rgba(200, 170, 140, 0.04) 1px, transparent 2px, transparent 50px, rgba(180, 150, 120, 0.03) 51px, transparent 52px),
+      repeating-linear-gradient(102deg, transparent 0, rgba(200, 170, 140, 0.03) 1px, transparent 3px, transparent 70px, rgba(180, 150, 120, 0.02) 71px, transparent 73px),
+      radial-gradient(ellipse at 50% 35%, rgba(60, 50, 40, 0.6) 0%, transparent 65%);
+  }
+
+  /* Vignette overlay — gentle darkening at screen edges */
+  #root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(43, 38, 32, 0.04) 100%);
+    z-index: 1;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.DEFAULT");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Page shadow — paper resting on desk with warm ambient bounce */
+  .shadow-page-book {
+    box-shadow:
+      2px 0 0 0 rgba(43, 38, 32, 0.04),
+      0 4px 24px -8px rgba(43, 38, 32, 0.22),
+      0 1px 4px -1px rgba(43, 38, 32, 0.08);
+  }
+
+  .shadow-page-book-hover {
+    box-shadow:
+      2px 0 0 0 rgba(43, 38, 32, 0.06),
+      0 10px 40px -12px rgba(43, 38, 32, 0.30),
+      0 2px 8px -2px rgba(43, 38, 32, 0.10);
+  }
+
+  /* Deeper paper shadow for loaded pages — adds desk-bounce warmth */
+  .shadow-paper-depth {
+    box-shadow:
+      1px 0 0 0 rgba(156, 107, 74, 0.03),
+      0 2px 12px -4px rgba(43, 38, 32, 0.08),
+      0 8px 32px -12px rgba(43, 38, 32, 0.20),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  /* Warm edge highlight simulating light hitting paper edge */
+  .shadow-edge-light {
+    box-shadow:
+      inset 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset -1px 0 0 rgba(43, 38, 32, 0.03),
+      0 1px 3px -1px rgba(43, 38, 32, 0.06);
+  }
+
+  /* Cover shadow */
+  .shadow-cover-book {
+    box-shadow:
+      0 4px 24px -8px rgba(0, 0, 0, 0.3),
+      0 12px 48px -12px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  /* Center-spine glow for the reader area — warm afternoon light */
+  .bg-spine-glow {
+    background:
+      radial-gradient(ellipse at 50% 10%, theme("colors.accent.pale / 0.06") 0%, transparent 55%),
+      theme("colors.paper.DEFAULT");
+  }
+
+  .dark .bg-spine-glow {
+    background:
+      radial-gradient(ellipse at 50% 10%, rgba(210, 180, 140, 0.04) 0%, transparent 55%),
+      #1a1612;
+  }
+
+  /* Walnut desk surface for cover/closing screens */
+  .bg-desk-cover {
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        rgba(101, 67, 33, 0.05) 1px,
+        transparent 2px,
+        transparent 50px,
+        rgba(90, 58, 28, 0.03) 51px,
+        transparent 52px
+      ),
+      repeating-linear-gradient(
+        102deg,
+        transparent 0,
+        rgba(111, 74, 36, 0.03) 1px,
+        transparent 3px,
+        transparent 80px,
+        rgba(101, 67, 33, 0.02) 81px,
+        transparent 83px
+      ),
+      radial-gradient(ellipse at 50% 15%, rgba(210, 180, 140, 0.04) 0%, transparent 55%);
+  }
+}
