@@ -24,7 +24,7 @@ export function PageNavigation({
   return (
     <nav
       aria-label="Diary page navigation"
-      className="flex w-full items-center justify-between gap-6"
+      className="flex w-full items-center justify-between gap-4 sm:gap-6"
     >
       <motion.button
         type="button"
@@ -32,7 +32,7 @@ export function PageNavigation({
         disabled={isFirst}
         aria-label="Previous page"
         {...microHoverSubtle}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/12 dark:border-paper-cream/10 bg-paper/70 dark:bg-black/20 text-ink-soft dark:text-paper-cream/60 backdrop-blur-sm transition-colors hover:bg-paper dark:hover:bg-white/5 hover:text-ink dark:hover:text-paper-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none disabled:hover:-translate-y-0"
+        className="touch-target inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/12 dark:border-paper-cream/10 bg-paper/70 dark:bg-black/20 text-ink-soft dark:text-paper-cream/60 backdrop-blur-sm transition-colors hover:bg-paper dark:hover:bg-white/5 hover:text-ink dark:hover:text-paper-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none disabled:hover:-translate-y-0"
       >
         <ChevronLeft className="h-4 w-4" aria-hidden="true" />
       </motion.button>
@@ -57,7 +57,7 @@ export function PageNavigation({
         disabled={isLast}
         aria-label="Next page"
         {...microHoverSubtle}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/12 dark:border-paper-cream/10 bg-paper/70 dark:bg-black/20 text-ink-soft dark:text-paper-cream/60 backdrop-blur-sm transition-colors hover:bg-paper dark:hover:bg-white/5 hover:text-ink dark:hover:text-paper-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none disabled:hover:-translate-y-0"
+        className="touch-target inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/12 dark:border-paper-cream/10 bg-paper/70 dark:bg-black/20 text-ink-soft dark:text-paper-cream/60 backdrop-blur-sm transition-colors hover:bg-paper dark:hover:bg-white/5 hover:text-ink dark:hover:text-paper-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none disabled:hover:-translate-y-0"
       >
         <ChevronRight className="h-4 w-4" aria-hidden="true" />
       </motion.button>

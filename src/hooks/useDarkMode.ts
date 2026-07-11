@@ -8,7 +8,7 @@ export function useDarkMode() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored !== null) return stored === "true";
     } catch {}
-    return false;
+    return true;
   });
 
   useEffect(() => {

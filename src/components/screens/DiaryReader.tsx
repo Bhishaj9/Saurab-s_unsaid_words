@@ -99,15 +99,15 @@ export function DiaryReader({
   return (
     <section
       aria-label="Diary reader"
-      className="flex min-h-[100dvh] w-full flex-col bg-spine-glow"
+      className="reading-environment flex min-h-[100dvh] w-full flex-col"
     >
       {/* Header */}
-      <header className="flex items-center justify-between px-5 pt-5 sm:px-8 sm:pt-6">
+      <header className="safe-area-pad-x flex items-center justify-between px-4 pt-4 sm:px-8 sm:pt-6 landscape:pt-2">
         <button
           type="button"
           onClick={onFinish}
           aria-label="Close the diary"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/8 bg-paper/60 text-ink-lighter/60 shadow-sm backdrop-blur-sm transition-all duration-gentle hover:bg-paper hover:text-ink-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-paper-cream/8 dark:bg-black/30 dark:text-paper-cream/40 dark:shadow-black/10 dark:hover:bg-black/50 dark:hover:text-paper-cream/70"
+          className="touch-target inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/8 bg-paper/60 text-ink-lighter/60 shadow-sm backdrop-blur-sm transition-all duration-gentle hover:bg-paper hover:text-ink-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-paper-cream/8 dark:bg-black/30 dark:text-paper-cream/40 dark:shadow-black/10 dark:hover:bg-black/50 dark:hover:text-paper-cream/70"
         >
           <X className="h-4 w-4" aria-hidden="true" />
         </button>
@@ -116,7 +116,7 @@ export function DiaryReader({
             type="button"
             onClick={toggleDarkMode}
             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/8 bg-paper/60 text-ink-lighter/60 shadow-sm backdrop-blur-sm transition-all duration-gentle hover:bg-paper hover:text-ink-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-paper-cream/8 dark:bg-black/30 dark:text-paper-cream/40 dark:shadow-black/10 dark:hover:bg-black/50 dark:hover:text-paper-cream/70"
+            className="touch-target inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/8 bg-paper/60 text-ink-lighter/60 shadow-sm backdrop-blur-sm transition-all duration-gentle hover:bg-paper hover:text-ink-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-paper-cream/8 dark:bg-black/30 dark:text-paper-cream/40 dark:shadow-black/10 dark:hover:bg-black/50 dark:hover:text-paper-cream/70"
           >
             {isDarkMode ? (
               <Sun className="h-4 w-4" aria-hidden="true" />
@@ -136,7 +136,7 @@ export function DiaryReader({
         ref={swipe.ref}
         onTouchStart={swipe.onTouchStart}
         onTouchEnd={swipe.onTouchEnd}
-        className="flex flex-1 items-center justify-center px-5 py-6 sm:px-10 sm:py-8 md:px-16 lg:px-24 xl:px-32"
+        className="desk-spotlight flex flex-1 items-center justify-center px-4 py-4 sm:px-10 sm:py-8 md:px-16 lg:px-24 xl:px-32 landscape:py-2"
       >
         <div className="flex h-full w-full max-w-reading items-center justify-center">
           <AnimatePresence mode="wait" custom={direction} initial={false}>
@@ -156,7 +156,7 @@ export function DiaryReader({
       </div>
 
       {/* Footer */}
-      <footer className="flex flex-col gap-4 px-5 pb-6 sm:px-8 sm:pb-8">
+      <footer className="safe-area-pad-x safe-area-pad-b flex flex-col gap-3 px-5 pb-5 sm:px-8 sm:pb-8 landscape:gap-2 landscape:pb-3">
         <div className="mx-auto w-full max-w-reading">
           <ReadingProgress current={currentIndex} total={pages.length} />
         </div>
@@ -182,7 +182,7 @@ export function DiaryReader({
             <button
               type="button"
               onClick={onFinish}
-               className="rounded-full border border-ink/15 dark:border-paper-cream/15 px-6 py-2 font-sans text-[10px] uppercase tracking-wider text-ink-soft dark:text-paper-cream/60 transition-all duration-gentle hover:-translate-y-0.5 hover:border-ink/25 dark:hover:border-paper-cream/25 hover:text-ink dark:hover:text-paper-cream hover:shadow-button-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-[#1a1612]"
+               className="touch-target rounded-full border border-ink/15 dark:border-paper-cream/15 px-6 py-2 font-sans text-[10px] uppercase tracking-wider text-ink-soft dark:text-paper-cream/60 transition-all duration-gentle hover:-translate-y-0.5 hover:border-ink/25 dark:hover:border-paper-cream/25 hover:text-ink dark:hover:text-paper-cream hover:shadow-button-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-[#1a1612]"
             >
               Close the diary
             </button>

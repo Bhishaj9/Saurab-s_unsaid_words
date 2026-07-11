@@ -37,19 +37,19 @@ export function OpeningScreen({
       className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-8 text-center dark:text-paper-cream/90"
     >
       {/* Decorative top */}
-      <div className="mb-10 h-px w-12 bg-ink/10 dark:bg-paper-cream/15" aria-hidden="true" />
+      <div className="mb-8 h-px w-12 bg-ink/10 dark:bg-paper-cream/15 sm:mb-10" aria-hidden="true" />
 
-      <h1 className="font-serif text-4xl leading-none tracking-tight text-ink dark:text-paper-cream md:text-5xl lg:text-6xl">
+      <h1 className="font-serif text-fluid-4xl leading-none tracking-tight text-ink dark:text-paper-cream">
         The Unsent Diary
       </h1>
 
-      <div className="my-8 h-px w-16 bg-ink/15 dark:bg-paper-cream/15" aria-hidden="true" />
+      <div className="my-6 h-px w-16 bg-ink/15 dark:bg-paper-cream/15 sm:my-8" aria-hidden="true" />
 
-      <p className="max-w-reading font-serif text-base leading-[1.8] tracking-[0.01em] text-ink-soft dark:text-paper-cream/70 sm:text-lg">
+      <p className="max-w-reading font-serif text-fluid-base leading-[1.8] tracking-[0.01em] text-ink-soft dark:text-paper-cream/70">
         Before you turn the first page&hellip;
       </p>
 
-      <p className="mt-4 max-w-reading font-serif text-base leading-[1.8] tracking-[0.01em] text-ink-soft dark:text-paper-cream/70 sm:text-lg">
+      <p className="mt-3 max-w-reading font-serif text-fluid-base leading-[1.8] tracking-[0.01em] text-ink-soft dark:text-paper-cream/70 sm:mt-4">
         These words were never written to change the past.
         <br />
         They were written because some thoughts deserve to exist,

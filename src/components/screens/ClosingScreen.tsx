@@ -53,17 +53,17 @@ export function ClosingScreen({ onReopen }: ClosingScreenProps) {
         aria-hidden="true"
       />
 
-      <div className="mb-8 h-px w-16 bg-cover-light/30" aria-hidden="true" />
+      <div className="mb-6 h-px w-16 bg-cover-light/30 sm:mb-8" aria-hidden="true" />
 
-      <h2 className="font-serif text-2xl leading-relaxed text-paper-cream sm:text-3xl md:text-4xl">
+      <h2 className="font-serif text-fluid-2xl leading-relaxed text-paper-cream sm:text-fluid-3xl md:text-fluid-4xl">
         Some stories don't end with answers.
         <br />
         They simply become memories.
       </h2>
 
-      <div className="my-8 h-px w-24 bg-cover-light/20" aria-hidden="true" />
+      <div className="my-6 h-px w-24 bg-cover-light/20 sm:my-8" aria-hidden="true" />
 
-      <p className="max-w-reading font-serif text-base leading-relaxed text-cover-light/70">
+      <p className="max-w-reading font-serif text-fluid-base leading-relaxed text-cover-light/70">
         Thank you for taking the time to read these pages.
       </p>
 

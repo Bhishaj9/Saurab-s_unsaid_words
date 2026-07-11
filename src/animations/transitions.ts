@@ -9,11 +9,11 @@ export const fadeVariants: Variants = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    transition: { duration: 0.45, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.22, 0.03, 0.2, 1] },
   },
   exit: {
     opacity: 0,
-    transition: { duration: 0.3, ease: "easeIn" },
+    transition: { duration: 0.35, ease: [0.3, 0.08, 0.4, 1] },
   },
 };
 
@@ -22,12 +22,12 @@ export const fadeUpVariants: Variants = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.55, ease: [0.22, 0.03, 0.2, 1] },
   },
   exit: {
     opacity: 0,
     y: -8,
-    transition: { duration: 0.3, ease: "easeIn" },
+    transition: { duration: 0.3, ease: [0.3, 0.08, 0.4, 1] },
   },
 };
 
@@ -48,18 +48,19 @@ export const pageVariants: Variants = {
     opacity: 0,
     scale: 0.97,
     y: direction === "forward" ? 10 : -8,
+    transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
   }),
   animate: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 0.03, 0.2, 1] },
+    transition: { duration: 0.55, ease: [0.18, 0.02, 0.2, 1] },
   },
   exit: (direction: NavigationDirection = "forward") => ({
     opacity: 0,
     scale: 0.96,
     y: direction === "forward" ? -10 : 8,
-    transition: { duration: 0.35, ease: [0.3, 0.05, 0.5, 1] },
+    transition: { duration: 0.3, ease: [0.3, 0.08, 0.4, 1] },
   }),
 };
 
@@ -68,7 +69,7 @@ export const pageVariants: Variants = {
    -------------------------------------------------------------------------- */
 
 export const microHoverSubtle = {
-  whileHover: { scale: 1.03 },
-  whileTap: { scale: 0.97 },
-  transition: { type: "spring", stiffness: 500, damping: 30 },
+  whileHover: { scale: 1.04 },
+  whileTap: { scale: 0.96 },
+  transition: { type: "spring", stiffness: 450, damping: 28 },
 };

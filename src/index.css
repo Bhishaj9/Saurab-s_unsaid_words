@@ -13,6 +13,12 @@
   body,
   #root {
     min-height: 100dvh;
+    min-height: 100svh;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
@@ -83,14 +89,21 @@
     scrollbar-color: theme("colors.ink.lighter / 0.3") transparent;
   }
 
-  /* Dark mode — warm paper-to-night transition */
+  /* Dark mode — warm walnut desk in a dimly lit room
+     The diary remains brightly illuminated; the environment falls into
+     warm shadow with rich wood tones. */
   .dark body,
   .dark #root {
-    background-color: #1a1612;
+    background-color: #18130e;
     background-image:
-      repeating-linear-gradient(90deg, transparent 0, rgba(200, 170, 140, 0.04) 1px, transparent 2px, transparent 50px, rgba(180, 150, 120, 0.03) 51px, transparent 52px),
-      repeating-linear-gradient(102deg, transparent 0, rgba(200, 170, 140, 0.03) 1px, transparent 3px, transparent 70px, rgba(180, 150, 120, 0.02) 71px, transparent 73px),
-      radial-gradient(ellipse at 50% 35%, rgba(60, 50, 40, 0.6) 0%, transparent 65%);
+      repeating-linear-gradient(90deg, transparent 0, rgba(200, 170, 140, 0.03) 1px, transparent 2px, transparent 50px, rgba(180, 150, 120, 0.02) 51px, transparent 52px),
+      repeating-linear-gradient(102deg, transparent 0, rgba(200, 170, 140, 0.02) 1px, transparent 3px, transparent 70px, rgba(180, 150, 120, 0.015) 71px, transparent 73px),
+      radial-gradient(ellipse at 50% 35%, rgba(210, 180, 140, 0.04) 0%, transparent 55%);
+  }
+
+  /* Dark mode vignette — stronger in dark mode for immersive depth */
+  .dark #root::before {
+    background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.25) 100%);
   }
 
   /* Vignette overlay — gentle darkening at screen edges */
@@ -99,7 +112,7 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(43, 38, 32, 0.04) 100%);
+    background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(43, 38, 32, 0.06) 100%);
     z-index: 1;
   }
 
@@ -121,36 +134,166 @@
   }
 }
 
+@layer components {
+  /* -----------------------------------------------------------------------
+     Immersive Reading Environment — walnut desk in dim room
+     The diary rests on a warm walnut surface, brightly illuminated by a
+     warm desk lamp. Everything outside the spotlight falls into shadow.
+     ----------------------------------------------------------------------- */
+
+  .reading-environment {
+    background:
+      /* Restrained wood grain overlay */
+      repeating-linear-gradient(
+        88deg,
+        transparent 0,
+        rgba(139, 90, 43, 0.04) 1px,
+        transparent 2px,
+        transparent 48px,
+        rgba(120, 80, 40, 0.03) 49px,
+        transparent 51px
+      ),
+      repeating-linear-gradient(
+        94deg,
+        transparent 0,
+        rgba(139, 90, 43, 0.03) 1px,
+        transparent 3px,
+        transparent 72px,
+        rgba(120, 80, 40, 0.02) 73px,
+        transparent 75px
+      ),
+      repeating-linear-gradient(
+        2deg,
+        transparent 0,
+        rgba(120, 80, 40, 0.015) 1px,
+        transparent 3px,
+        transparent 120px,
+        rgba(110, 70, 35, 0.01) 121px,
+        transparent 123px
+      ),
+      /* Warm concentrated spotlight — desk lamp on diary */
+      radial-gradient(ellipse at 50% 38%, rgba(255, 238, 215, 0.16) 0%, rgba(220, 195, 160, 0.08) 20%, rgba(180, 155, 120, 0.04) 40%, transparent 65%),
+      /* Vignette — room darkness at edges */
+      radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(10, 8, 6, 0.3) 80%),
+      radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(0, 0, 0, 0.45) 100%);
+    background-color: #1a1510;
+    background-attachment: fixed;
+  }
+
+  /* Dark mode — deeper, warmer reading environment */
+  .dark .reading-environment {
+    background:
+      repeating-linear-gradient(
+        88deg,
+        transparent 0,
+        rgba(139, 90, 43, 0.05) 1px,
+        transparent 2px,
+        transparent 48px,
+        rgba(120, 80, 40, 0.035) 49px,
+        transparent 51px
+      ),
+      repeating-linear-gradient(
+        94deg,
+        transparent 0,
+        rgba(139, 90, 43, 0.035) 1px,
+        transparent 3px,
+        transparent 72px,
+        rgba(120, 80, 40, 0.025) 73px,
+        transparent 75px
+      ),
+      repeating-linear-gradient(
+        2deg,
+        transparent 0,
+        rgba(120, 80, 40, 0.02) 1px,
+        transparent 3px,
+        transparent 120px,
+        rgba(110, 70, 35, 0.015) 121px,
+        transparent 123px
+      ),
+      /* Warmer, more concentrated spotlight in dark mode */
+      radial-gradient(ellipse at 50% 38%, rgba(255, 238, 215, 0.2) 0%, rgba(220, 195, 160, 0.1) 20%, rgba(180, 155, 120, 0.04) 40%, transparent 60%),
+      /* Deeper vignette */
+      radial-gradient(ellipse at 50% 50%, transparent 25%, rgba(8, 6, 4, 0.4) 80%),
+      radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+    background-color: #14100c;
+  }
+
+  /* Warm reflection glow beneath the diary on the desk surface */
+  .desk-spotlight {
+    position: relative;
+  }
+
+  .desk-spotlight::before {
+    content: "";
+    position: absolute;
+    bottom: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(70%, 36rem);
+    height: 8%;
+    background: radial-gradient(ellipse at center, rgba(255, 238, 215, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+  }
+
+  /* Warm desk glow radiating upward onto the paper bottom edge */
+  .desk-spotlight::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90%, 48rem);
+    height: min(80%, 36rem);
+    background: radial-gradient(ellipse at 50% 55%, rgba(255, 238, 215, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 2px;
+  }
+}
+
 @layer utilities {
-  /* Page shadow — paper resting on desk in warm lamplight */
+  /* -----------------------------------------------------------------------
+     Paper shadows — realistic paper resting on desk under warm lamp light
+     ----------------------------------------------------------------------- */
+
   .shadow-page-book {
     box-shadow:
-      2px 0 0 0 rgba(255, 240, 225, 0.02),
-      0 4px 20px -6px rgba(0, 0, 0, 0.25),
-      0 1px 4px -1px rgba(0, 0, 0, 0.12);
+      1px 0 0 0 rgba(255, 240, 225, 0.02),
+      0 2px 8px -3px rgba(0, 0, 0, 0.2),
+      0 6px 20px -10px rgba(0, 0, 0, 0.15);
   }
 
   .shadow-page-book-hover {
     box-shadow:
-      2px 0 0 0 rgba(255, 240, 225, 0.03),
-      0 8px 36px -10px rgba(0, 0, 0, 0.30),
-      0 2px 8px -2px rgba(0, 0, 0, 0.15);
+      1px 0 0 0 rgba(255, 240, 225, 0.03),
+      0 4px 16px -6px rgba(0, 0, 0, 0.22),
+      0 12px 36px -14px rgba(0, 0, 0, 0.18);
   }
 
-  /* Deeper paper shadow for loaded pages — desk-lamp warmth illuminating the paper edge */
+  /* Deep paper shadow — warm desk lamp illuminates paper, creating warm
+     upward edge light and cool downward shadow. Paper casts a soft shadow
+     on the desk surface below it. */
   .shadow-paper-depth {
     box-shadow:
-      2px 0 0 0 rgba(255, 240, 225, 0.03),
-      0 2px 8px -2px rgba(0, 0, 0, 0.15),
-      0 8px 32px -10px rgba(0, 0, 0, 0.35),
-      0 20px 60px -16px rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 rgba(255, 248, 240, 0.15);
+      /* Warm bounce light from desk surface */
+      0 -1px 0 rgba(255, 238, 215, 0.03),
+      /* Main paper shadow — soft and warm */
+      0 2px 10px -3px rgba(0, 0, 0, 0.25),
+      0 8px 28px -8px rgba(0, 0, 0, 0.35),
+      0 24px 60px -16px rgba(0, 0, 0, 0.2),
+      /* Warm edge light on top-left (desk lamp direction) */
+      inset 1px 1px 0 rgba(255, 248, 240, 0.12),
+      /* Cool shadow on bottom-right edge */
+      inset -1px -1px 0 rgba(0, 0, 0, 0.04);
+    border-radius: 1px;
   }
 
-  /* Warm edge highlight simulating desk lamp light hitting paper edge */
+  /* Warm edge highlight — desk lamp catching the edge of the paper */
   .shadow-edge-light {
     box-shadow:
-      inset 1px 0 0 rgba(255, 248, 240, 0.06),
+      inset 1px 0 0 rgba(255, 248, 240, 0.08),
       inset -1px 0 0 rgba(0, 0, 0, 0.03),
       0 1px 3px -1px rgba(0, 0, 0, 0.08);
   }
@@ -164,40 +307,10 @@
       inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   }
 
-  /* Nighttime reading environment — warm desk lamp on walnut desk */
-  .bg-spine-glow {
-    background:
-      repeating-linear-gradient(90deg, transparent 0, rgba(85, 55, 28, 0.035) 1px, transparent 2px, transparent 55px, rgba(75, 48, 22, 0.025) 56px, transparent 57px),
-      repeating-linear-gradient(102deg, transparent 0, rgba(95, 62, 30, 0.025) 1px, transparent 3px, transparent 75px, rgba(85, 55, 28, 0.02) 76px, transparent 78px),
-      radial-gradient(ellipse at 50% 45%, rgba(255, 238, 215, 0.06) 0%, rgba(200, 170, 140, 0.02) 30%, transparent 60%);
-    background-color: #17130f;
-    background-attachment: fixed;
-  }
+  /* -----------------------------------------------------------------------
+     Walnut desk surface for cover/closing screens
+     ----------------------------------------------------------------------- */
 
-  /* Subtle desk reflection beneath the diary page — warm bounce light */
-  .desk-reflection::after {
-    content: "";
-    position: absolute;
-    bottom: -8%;
-    left: 10%;
-    width: 80%;
-    height: 6%;
-    background: radial-gradient(ellipse at center, rgba(255, 238, 215, 0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* Safe-area-aware padding for notched devices */
-  .safe-area-pad-x {
-    padding-left: max(1.25rem, env(safe-area-inset-left));
-    padding-right: max(1.25rem, env(safe-area-inset-right));
-  }
-
-  .safe-area-pad-y {
-    padding-top: max(1.25rem, env(safe-area-inset-top));
-    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
-  }
-
-  /* Walnut desk surface for cover/closing screens */
   .bg-desk-cover {
     background:
       repeating-linear-gradient(
@@ -219,5 +332,122 @@
         transparent 83px
       ),
       radial-gradient(ellipse at 50% 15%, rgba(210, 180, 140, 0.04) 0%, transparent 55%);
+  }
+
+  /* -----------------------------------------------------------------------
+     Safe-area-aware padding for notched devices
+     ----------------------------------------------------------------------- */
+
+  .safe-area-pad-x {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .safe-area-pad-y {
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-area-pad-b {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-area-pad-t {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  /* -----------------------------------------------------------------------
+     Responsive typography helpers
+     ----------------------------------------------------------------------- */
+
+  .text-fluid-xs {
+    font-size: clamp(0.625rem, 0.5vw + 0.5rem, 0.75rem);
+  }
+
+  .text-fluid-sm {
+    font-size: clamp(0.75rem, 0.6vw + 0.6rem, 0.875rem);
+  }
+
+  .text-fluid-base {
+    font-size: clamp(0.875rem, 0.7vw + 0.7rem, 1rem);
+  }
+
+  .text-fluid-lg {
+    font-size: clamp(1rem, 0.8vw + 0.8rem, 1.125rem);
+  }
+
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 1.2vw + 0.8rem, 1.5rem);
+  }
+
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 1.8vw + 0.8rem, 2rem);
+  }
+
+  .text-fluid-3xl {
+    font-size: clamp(1.75rem, 2.5vw + 0.8rem, 2.5rem);
+  }
+
+  .text-fluid-4xl {
+    font-size: clamp(2rem, 3vw + 0.8rem, 3rem);
+  }
+
+  /* -----------------------------------------------------------------------
+     Touch target minimum sizing for mobile
+     ----------------------------------------------------------------------- */
+
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* -----------------------------------------------------------------------
+     Landscape-specific adjustments
+     ----------------------------------------------------------------------- */
+
+  @media (orientation: landscape) and (max-height: 600px) {
+    .landscape-compact {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .landscape-compact-y {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .landscape-hide {
+      display: none;
+    }
+  }
+
+  /* -----------------------------------------------------------------------
+     Loading skeleton for diary pages
+     ----------------------------------------------------------------------- */
+
+  .skeleton-pulse {
+    background: linear-gradient(
+      110deg,
+      rgba(227, 217, 198, 0.4) 0%,
+      rgba(244, 239, 230, 0.6) 25%,
+      rgba(227, 217, 198, 0.4) 50%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+
+  .dark .skeleton-pulse {
+    background: linear-gradient(
+      110deg,
+      rgba(60, 50, 40, 0.4) 0%,
+      rgba(80, 68, 56, 0.6) 25%,
+      rgba(60, 50, 40, 0.4) 50%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 }

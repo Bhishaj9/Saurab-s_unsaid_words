@@ -19,12 +19,22 @@ function DiaryPageComponent({ page, priority = false }: DiaryPageProps) {
   return (
     <figure className="group flex h-full w-full items-center justify-center">
       <div className="relative flex items-center justify-center">
-        {/* Warm edge light visible behind the page */}
+        {/* Warm ambient glow around the paper — desk lamp spill */}
         <div
-          className="pointer-events-none absolute -inset-4 rounded-sm opacity-60 dark:opacity-30"
+          className="pointer-events-none absolute -inset-6 rounded-sm opacity-70 dark:opacity-50"
           style={{
             background:
-              "linear-gradient(135deg, rgba(255,248,240,0.12) 0%, transparent 35%), linear-gradient(225deg, rgba(43,38,32,0.03) 0%, transparent 40%)",
+              "radial-gradient(ellipse at 40% 30%, rgba(255,248,240,0.15) 0%, rgba(255,238,215,0.06) 25%, transparent 55%), radial-gradient(ellipse at 60% 80%, rgba(43,38,32,0.04) 0%, transparent 40%)",
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Warm desk lamp edge light on top-left, cool shadow bottom-right */}
+        <div
+          className="pointer-events-none absolute -inset-3 rounded-sm opacity-40 dark:opacity-25"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(255,238,215,0.08) 0%, transparent 35%), linear-gradient(225deg, rgba(0,0,0,0.04) 0%, transparent 45%)",
           }}
           aria-hidden="true"
         />
@@ -34,7 +44,7 @@ function DiaryPageComponent({ page, priority = false }: DiaryPageProps) {
             src={page.image}
             alt={label}
             className={
-              "max-h-full max-w-full select-none object-contain " +
+              "max-h-[90dvh] max-w-full select-none object-contain " +
               "shadow-page-book transition-all duration-gentle " +
               "group-hover:shadow-page-book-hover " +
               (loaded ? "opacity-100" : "opacity-0")
@@ -49,7 +59,7 @@ function DiaryPageComponent({ page, priority = false }: DiaryPageProps) {
 
         {!loaded ? (
           <div
-            className="absolute inset-0 animate-pulse bg-paper-deep/40"
+            className="absolute inset-0 skeleton-pulse rounded-sm"
             aria-hidden="true"
           />
         ) : null}
