@@ -60,6 +60,7 @@ export default {
           "0 8px 36px -10px rgba(43, 38, 32, 0.32), 0 2px 8px -2px rgba(43, 38, 32, 0.10)",
         "button-hover": "0 4px 16px -6px rgba(43, 38, 32, 0.3)",
         glow: "0 0 40px -12px rgba(156, 107, 74, 0.12)",
+        "warm-glow": "0 4px 20px -6px rgba(101, 67, 33, 0.18), 0 0 40px -12px rgba(156, 107, 74, 0.15)",
       },
       transitionDuration: {
         gentle: "400ms",

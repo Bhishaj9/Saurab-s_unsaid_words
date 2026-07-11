@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeUpVariants } from "@/animations/transitions";
 
@@ -7,14 +6,6 @@ interface ClosingScreenProps {
 }
 
 export function ClosingScreen({ onReopen }: ClosingScreenProps) {
-  const [showKeepsake, setShowKeepsake] = useState(false);
-  const [noteVisible, setNoteVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowKeepsake(true), 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <motion.section
       variants={fadeUpVariants}
@@ -67,91 +58,21 @@ export function ClosingScreen({ onReopen }: ClosingScreenProps) {
         Thank you for taking the time to read these pages.
       </p>
 
+      <p className="mt-10 max-w-reading font-serif text-fluid-sm italic leading-relaxed text-cover-light/50">
+        Chocolate waffle cake&mdash;still warm, still yours.
+      </p>
+
       <button
         type="button"
         onClick={onReopen}
-        className="mt-14 inline-flex items-center rounded-full border border-cover-light/30 px-8 py-3 font-sans text-xs uppercase tracking-wider text-cover-light/70 transition-all duration-gentle hover:-translate-y-0.5 hover:border-paper-cream/40 hover:text-paper-cream hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cover-dark"
+        className="mt-14 inline-flex items-center rounded-full border border-cover-light/40 px-9 py-3 font-sans text-xs uppercase tracking-wider text-cover-light/85 transition-all duration-gentle hover:-translate-y-0.5 hover:border-paper-cream/40 hover:text-paper-cream hover:shadow-warm-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cover-dark"
       >
         Read again
       </button>
 
       <div className="mt-8 h-px w-16 bg-cover-light/30" aria-hidden="true" />
 
-      {/* Hidden memory — a small folded note on the desk edge */}
-      {showKeepsake ? (
-        <motion.div
-          className="fixed bottom-8 right-8 z-10"
-          initial={{ opacity: 0, y: 12, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-        >
-          <button
-            type="button"
-            onClick={() => setNoteVisible(!noteVisible)}
-            onMouseEnter={() => setNoteVisible(true)}
-            onMouseLeave={() => setNoteVisible(false)}
-            aria-label={noteVisible ? "Hidden note visible" : "Discover a hidden note"}
-            className="group relative flex cursor-default items-center gap-3"
-          >
-            {/* Folded paper with paper clip */}
-            <span
-              className={`relative block transition-all duration-700 ease-out ${
-                noteVisible ? "opacity-90" : "opacity-20 hover:opacity-50"
-              }`}
-              aria-hidden="true"
-            >
-              <svg
-                width="36"
-                height="28"
-                viewBox="0 0 36 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Paper body */}
-                <rect
-                  x="1"
-                  y="4"
-                  width="31"
-                  height="23"
-                  rx="1"
-                  fill="rgba(210,195,175,0.6)"
-                  stroke="rgba(180,165,145,0.4)"
-                  strokeWidth="0.5"
-                />
-                {/* Fold corner */}
-                <path
-                  d="M23 4 L32 13 L23 13 Z"
-                  fill="rgba(195,180,160,0.5)"
-                  stroke="rgba(180,165,145,0.3)"
-                  strokeWidth="0.3"
-                />
-                {/* Paper clip */}
-                <path
-                  d="M25 2 C25 -2, 29 -2, 29 2 L29 16 C29 20, 25 20, 25 16 L25 8"
-                  stroke="rgba(180,165,145,0.5)"
-                  strokeWidth="1.2"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
 
-            {/* Note text */}
-            <motion.span
-              initial={{ opacity: 0, x: -8 }}
-              animate={
-                noteVisible
-                  ? { opacity: 1, x: 0 }
-                  : { opacity: 0, x: -8 }
-              }
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="max-w-48 rounded-sm bg-paper-cream/10 px-3 py-2 font-serif text-xs italic leading-relaxed text-paper-cream/80 backdrop-blur-sm"
-            >
-              Chocolate waffle cake — still warm, still yours.
-            </motion.span>
-          </button>
-        </motion.div>
-      ) : null}
     </motion.section>
   );
 }

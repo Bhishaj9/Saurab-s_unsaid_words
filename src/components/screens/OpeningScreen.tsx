@@ -72,7 +72,7 @@ export function OpeningScreen({
                 className="inline-flex items-center gap-2 rounded-full border border-ink/20 dark:border-paper-cream/20 px-10 py-3 font-sans text-xs uppercase tracking-wider text-ink dark:text-paper-cream transition-all duration-gentle hover:-translate-y-0.5 hover:shadow-button-hover hover:border-ink/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper dark:focus-visible:ring-offset-[#1a1612]"
               >
                 <Music className="h-3.5 w-3.5" aria-hidden="true" />
-                Read with Music
+                Read with Gentle Piano Ambience
               </button>
             </motion.div>
 

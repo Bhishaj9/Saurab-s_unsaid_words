@@ -19,7 +19,7 @@ import { ClosingScreen } from "@/components/screens/ClosingScreen";
  */
 export default function App() {
   const [phase, setPhase] = useState<AppPhase>("opening");
-  const [ambienceEnabled, setAmbienceEnabled] = useState(true);
+  const [ambienceEnabled, setAmbienceEnabled] = useState(false);
 
   const goToCover = () => setPhase("cover");
   const goToCoverWithAmbience = () => {
