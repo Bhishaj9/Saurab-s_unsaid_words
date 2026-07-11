@@ -34,7 +34,7 @@ export function OpeningScreen({
       initial="initial"
       animate="animate"
       exit="exit"
-      className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-8 text-center dark:text-paper-cream/90"
+      className="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-8 text-center bg-paper dark:bg-cover-dark dark:text-paper-cream/90"
     >
       {/* Decorative top */}
       <div className="mb-8 h-px w-12 bg-ink/10 dark:bg-paper-cream/15 sm:mb-10" aria-hidden="true" />
