@@ -58,14 +58,14 @@ export function ClosingScreen({ onReopen }: ClosingScreenProps) {
         Thank you for taking the time to read these pages.
       </p>
 
-      <p className="mt-10 max-w-reading font-serif text-fluid-sm italic leading-relaxed text-cover-light/50">
+      <p className="mt-12 mb-6 max-w-reading font-serif text-fluid-sm italic leading-relaxed text-cover-light/65">
         Chocolate waffle cake&mdash;still warm, still yours.
       </p>
 
       <button
         type="button"
         onClick={onReopen}
-        className="mt-14 inline-flex items-center rounded-full border border-cover-light/40 px-9 py-3 font-sans text-xs uppercase tracking-wider text-cover-light/85 transition-all duration-gentle hover:-translate-y-0.5 hover:border-paper-cream/40 hover:text-paper-cream hover:shadow-warm-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cover-dark"
+        className="mt-14 inline-flex items-center rounded-full border border-cover-light/50 px-10 py-3 font-sans text-xs font-medium uppercase tracking-wider text-cover-light transition-all duration-gentle hover:-translate-y-0.5 hover:border-paper-cream/40 hover:text-paper-cream hover:shadow-warm-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cover-dark"
       >
         Read again
       </button>

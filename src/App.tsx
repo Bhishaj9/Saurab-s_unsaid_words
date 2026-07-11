@@ -20,6 +20,7 @@ import { ClosingScreen } from "@/components/screens/ClosingScreen";
 export default function App() {
   const [phase, setPhase] = useState<AppPhase>("opening");
   const [ambienceEnabled, setAmbienceEnabled] = useState(false);
+  const [sessionKey, setSessionKey] = useState(0);
 
   const goToCover = () => setPhase("cover");
   const goToCoverWithAmbience = () => {
@@ -30,12 +31,13 @@ export default function App() {
   const goToClosing = () => setPhase("closing");
   const goToOpening = () => {
     setAmbienceEnabled(false);
+    setSessionKey((k) => k + 1);
     setPhase("opening");
   };
 
   return (
     <MotionConfig reducedMotion="user">
-      <main className="relative min-h-[100dvh] w-full bg-paper text-ink antialiased">
+      <main key={sessionKey} className="relative min-h-[100dvh] w-full bg-paper text-ink antialiased">
         <AnimatePresence mode="wait">
           {phase === "opening" ? (
             <OpeningScreen
