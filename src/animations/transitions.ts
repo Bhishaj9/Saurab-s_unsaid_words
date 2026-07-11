@@ -35,30 +35,31 @@ export const fadeUpVariants: Variants = {
    Page-level transition within the diary reader
    -------------------------------------------------------------------------- */
 
-/** Direction-aware page transition — a subtle zoom + fade that gives the
- *  impression of one page dissolving into the next. The direction is supplied
- *  via Framer Motion's `custom` prop so exit animations correctly read the
- *  direction the page was navigated *away* with.
+/** Direction-aware page transition — simulates gently lifting, settling,
+ *  and resting a physical sheet of paper.
  *
- *  Easing is tuned for a gentle, physical feel: a soft ease-out on enter
- *  (settling) and a faster ease-in on exit (withdrawing). */
+ *  Enter: the page rises slightly and settles into place (paper setting down).
+ *  Exit:  the page lifts away in the direction of travel (paper lifting off).
+ *
+ *  Easing uses a slow ease-out for the settle and a slightly quicker
+ *  ease-in for the lift, mimicking the weight and friction of paper. */
 export const pageVariants: Variants = {
   initial: (direction: NavigationDirection = "forward") => ({
     opacity: 0,
     scale: 0.97,
-    y: direction === "forward" ? 8 : -6,
+    y: direction === "forward" ? 10 : -8,
   }),
   animate: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.5, ease: [0.22, 0.03, 0.2, 1] },
   },
   exit: (direction: NavigationDirection = "forward") => ({
     opacity: 0,
     scale: 0.96,
-    y: direction === "forward" ? -8 : 6,
-    transition: { duration: 0.3, ease: [0.25, 1, 0.5, 1] },
+    y: direction === "forward" ? -10 : 8,
+    transition: { duration: 0.35, ease: [0.3, 0.05, 0.5, 1] },
   }),
 };
 
