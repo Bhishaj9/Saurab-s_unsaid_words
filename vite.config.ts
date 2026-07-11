@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/Saurab-s_unsaid_words/",
   plugins: [react()],
   resolve: {
     alias: {
